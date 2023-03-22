@@ -6,14 +6,16 @@ let group = document.querySelector('.group')
 let xhr = new XMLHttpRequest()
 
 input.addEventListener('input', () => {
-  url = `https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=07975b6284106c9be0051b263f218d66`
 
+  // h > xhr(/?q=h)search
+  url = `https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=07975b6284106c9be0051b263f218d66`
+  // fetch(`/search?q=${input.value}`, domElement)
   xhr.onreadystatechange = () => {
     if (xhr.readyState == 4) {
       if (xhr.status == 200) {
         let data = JSON.parse(xhr.responseText)
         group.innerHTML = ''
-        domElement(data)
+        cb(data)
       }else{
         group.innerHTML = ''
       }
@@ -24,6 +26,24 @@ input.addEventListener('input', () => {
 })
 
 
+// function fetch(url, cb){
+  // xhr.onreadystatechange = () => {
+  //   if (xhr.readyState == 4) {
+  //     if (xhr.status == 200) {
+  //       let data = JSON.parse(xhr.responseText)
+  //       group.innerHTML = ''
+  //       cb(data)
+  //     }else{
+  //       group.innerHTML = ''
+  //     }
+  //   }
+  // }
+  // xhr.open('GET', url, true)
+  // xhr.send()
+// }
+
+
+// btnSearch.click > /serach/value
 let domElement = (data) => {
   let box = document.createElement("div");
   box.className = "box";
