@@ -1,5 +1,6 @@
 let input = document.querySelector('input')
 let group = document.querySelector('.group')
+let list = document.querySelector('.list')
 
 function fetch(url, cb, parent) {
   let xhr = new XMLHttpRequest()
@@ -22,7 +23,34 @@ function fetch(url, cb, parent) {
   xhr.send()
 }
 
-// btnSearch.click > /serach/value
+input.addEventListener('input', () => {
+  if (input.value) {
+    fetch(`/search?q=${input.value}`, domListElement, list)
+  } else {
+    list.innerHTML = ''
+  }
+})
+
+let domListElement = (data) => {
+
+  data.forEach(item => {
+    let li = document.createElement('li')
+    li.className = 'count-item';
+    li.textContent = item.name;
+    list.appendChild(li)
+
+
+    li.addEventListener('click', () => {
+      input.value = li.textContent;
+
+      let url = `https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=07975b6284106c9be0051b263f218d66`
+      fetch(url, domCardElement, group)
+      list.innerHTML = ''
+    })
+  });
+
+};
+
 let domElement = (data) => {
   let box = document.createElement("div");
   box.className = "box";
