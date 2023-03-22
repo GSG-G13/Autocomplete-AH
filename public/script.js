@@ -1,6 +1,7 @@
 let input = document.querySelector('input')
 let group = document.querySelector('.group')
 let list = document.querySelector('.list')
+let searchForm = document.querySelector('.search')
 
 function fetch(url, cb, parent) {
   let xhr = new XMLHttpRequest()
@@ -31,6 +32,16 @@ input.addEventListener('input', () => {
   }
 })
 
+searchForm.addEventListener('submit', (e) => {
+  e.preventDefault()
+
+  list.innerHTML = ''
+
+  let url = `https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=07975b6284106c9be0051b263f218d66`
+  fetch(url, domCardElement, group)
+
+})
+
 let domListElement = (data) => {
 
   data.forEach(item => {
@@ -51,7 +62,7 @@ let domListElement = (data) => {
 
 };
 
-let domElement = (data) => {
+let domCardElement = (data) => {
   let box = document.createElement("div");
   box.className = "box";
   group.appendChild(box);
