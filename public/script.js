@@ -83,7 +83,7 @@ let domCardElement = (data) => {
 
   let temp = document.createElement("p");
   temp.className = "temp";
-  temp.textContent = "temperature";
+  temp.textContent = "Temperature : ";
   briefDiv.appendChild(temp);
 
   let tempSpan = document.createElement("span");
@@ -92,7 +92,7 @@ let domCardElement = (data) => {
 
   let wind = document.createElement("p");
   wind.className = "wind ";
-  wind.textContent = "wind Spread : ";
+  wind.textContent = "Wind Speedd : ";
   briefDiv.appendChild(wind);
 
   let windSpan = document.createElement("span");
