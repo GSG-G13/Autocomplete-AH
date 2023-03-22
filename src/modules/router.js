@@ -1,11 +1,9 @@
 const fs = require('fs')
 const path = require('path')
 
-
 const router = (req, res) => {
-
     let paramsUrl = req.url.split('?')
-    var params = new URLSearchParams(paramsUrl[1]);
+    let params = new URLSearchParams(paramsUrl[1]);
 
     const urls = {
         html: {
@@ -18,13 +16,11 @@ const router = (req, res) => {
             '/script.js': 'script.js',
         }
     }
-
     const files = Object.keys(urls)
 
     files.forEach(file => {
         const paths = Object.keys(urls[file])
         paths.forEach(myPath => {
-            console.log(myPath);
             if (req.url === myPath) {
                 let filePath = path.join(__dirname, '..', '..', 'public', urls[file][myPath])
                 fs.readFile(filePath, 'utf8', (err, data) => {
@@ -42,20 +38,14 @@ const router = (req, res) => {
 
     if (req.url === `/search?${params}`) {
         let inputVal = params.get('q')
-
         let filePath = path.join(__dirname, '..', 'countries.json')
-
-
         fs.readFile(filePath, 'utf8', (err, data) => {
-
             let filteredCount;
-
             if (err) {
                 console.log(err);
                 return;
             } else {
                 let dataArr = JSON.parse(data)
-
                 filteredCount = dataArr.filter((country) => {
                     return country.name?.toLowerCase().includes(inputVal?.toLowerCase());
                 })
@@ -65,7 +55,6 @@ const router = (req, res) => {
         })
     } else if (req.url === '/weather.svg') {
         fs.readFile(path.join(__dirname, '..', '..', 'public', 'weather.svg'), (err, file) => {
-            // /* istanbul ignore if */
             if (err) {
                 res.writeHead(500, { 'content-type': 'text/plain' });
                 res.end('server error');
