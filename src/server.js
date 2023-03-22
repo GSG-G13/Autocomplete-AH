@@ -1,14 +1,3 @@
-// router
-// end point /search?q=${input.value}
-
-// H
-
-
-
-// var params = new URLSearchParams('user=abc&q=xyz');
-// console.log(params.get('user'));
-// console.log(params.get('q'));
-
 const http = require('http')
 const PORT = 4000
 
