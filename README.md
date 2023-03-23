@@ -63,6 +63,6 @@ You can see our demo website [Here](https://country-weather.onrender.com/).
 ---
 
 
-## Built with ❤️ by :
+## Team Members 🙋 :
 - [Ahmed Irheem](https://github.com/ahmedirheem).
 - [Heba Adwan](https://github.com/Heba-Adwan).
