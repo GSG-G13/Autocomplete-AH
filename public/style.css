@@ -69,10 +69,7 @@ header {
 .headTitle h1 {
     color: #eee;
     padding: 20px;
-
-
 }
-
 
 @media (max-width: 767px) {
     .headTitle h1 {
@@ -80,36 +77,32 @@ header {
     }
 }
 
-
-
-.search {
-    padding: 40px 0;
+.search, .list {
+    padding: 0;
     width: 50%;
     margin: 0 auto;
 }
 
 @media (max-width: 767px) {
-    .search {
-        padding: 40px 0;
+    .search, .list {
         width: 90%;
-        margin: 0 auto;
     }
 }
 
 .search {
-    padding: 40px 0;
-    width: 50%;
-    margin: 0 auto;
+    padding-top: 40px;
 }
 
-@media (max-width: 767px) {
-    .search {
-        padding: 40px 0;
-        width: 90%;
-        margin: 0 auto;
-    }
+.list .count-item{
+    background-color: #eee;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
 
+.list .count-item:hover{
+    background-color: #ccc
+}
 .search .search-input {
     border: none;
     outline: none;
